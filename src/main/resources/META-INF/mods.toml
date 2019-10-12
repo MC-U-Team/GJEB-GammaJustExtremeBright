@@ -26,10 +26,3 @@ authors="HyCraftHD"
 	    versionRange="[1.14.4]"
 	    ordering="NONE"
 	    side="CLIENT"
-	    
-	[[dependencies.gjeb]]
-	    modId="uteamcore"
-	    mandatory=true
-	    versionRange="[2.7.3.132,)"
-	    ordering="NONE"
-	    side="CLIENT"

@@ -147,7 +147,6 @@ sourceSets {
 
 dependencies {
     minecraft "net.minecraftforge:forge:$config.forge.version"
-	compile "info.u-team:u_team_core-${config.forge.mcversion}:${config.uteamcore.version}:dev"
 }
 
 compileJava {
@@ -185,10 +184,6 @@ curseforge {
 		    forgeGradleIntegration = false
 		}
 		
-		relations {
-      		requiredDependency "u-team-core"
-    	}
-
     	mainArtifact(jar) {
       		displayName = "${config.curse.display}-${config.forge.mcversion}-${project.version}"
       		changelogType = "html"
