@@ -26,7 +26,7 @@ public class GJEBMod {
 		}, (settings, value) -> {
 			settings.gamma = value;
 		}, (settings, option) -> {
-			final double value = option.func_216726_a(option.get(settings));
+			final double value = option.normalizeValue(option.get(settings));
 			final String displayName = option.getDisplayString();
 			if (value == 0.0D) {
 				return displayName + I18n.format("options.gamma.min");
