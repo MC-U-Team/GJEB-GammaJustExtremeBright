@@ -7,39 +7,20 @@ buildscript {
     }
     dependencies {
         classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "3.+", changing: true
-		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.3.0"
+		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
 
-apply from: "https://raw.githubusercontent.com/HyCraftHD/Blank-Forge-Project/master/configuration.methods"
-apply from: "https://raw.githubusercontent.com/HyCraftHD/Blank-Forge-Project/master/git.methods"
-
-setup()
-info()
+apply from: "https://gradle-files.u-team.info/default-project.gradle"
 
 apply plugin: "net.minecraftforge.gradle"
 apply plugin: "eclipse"
 apply plugin: "com.matthewprenger.cursegradle"
 apply plugin: "maven"
 
-repositories {
-    maven { url = "https://repo.u-team.info" }
-    maven { url = "https://dvs1.progwml6.com/files/maven" }
-}
-
-getBuildNumber()
-
 group = "info.u-team"
-archivesBaseName = "${config.mod.filename}-${config.forge.mcversion}"
-version = "${config.mod.version}.${config.buildnumber}" + getAppendix();
-
-def getAppendix() {
-	if("${config.mod.snapshot}".toBoolean()) {
-		return "-SNAPSHOT"
-	} else {
-		return ""
-	}
-}
+archivesBaseName = generateArchivesBaseName()
+version = generateVersion()
 
 sourceCompatibility = targetCompatibility = "1.8"
 
@@ -50,7 +31,7 @@ minecraft {
         client = {
             workingDirectory project.file("run/client").canonicalPath
             mods {
-                gjeb {
+                "${config.mod.modid}" {
                     source sourceSets.main
 				}
 			}
@@ -58,34 +39,21 @@ minecraft {
         server = {
             workingDirectory project.file("run/server").canonicalPath
             mods {
-                gjeb {
+                "${config.mod.modid}" {
                     source sourceSets.main
 				}
 			}
         }
         data = {
             workingDirectory project.file("run/data").canonicalPath
-            args "--mod", "gjeb", "--all", "--output", "\"" + file("src/generated/resources").toString() + "\""
+            args "--mod", config.mod.modid, "--all", "--output", "\"" + file("src/generated/resources").toString() + "\"", "--validate", "--existing", "\"" + sourceSets.main.resources.srcDirs[0] + "\""
             mods {
-                gjeb {
+                "${config.mod.modid}" {
                     source sourceSets.main
 				}
 			}
         }
     }
-}
-
-def normalManifest = {
-	attributes(
-		"Specification-Title": config.mod.name,
-        "Specification-Vendor": "Team UTeam",
-        "Specification-Version": config.forge.major_version,
-		"Built-On": config.forge.mcversion,
-		"Implementation-Title": config.mod.name,
-    	"Implementation-Version": project.version,
-		"Implementation-Vendor": "Team UTeam",
-        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-	)
 }
 
 jar {
@@ -136,6 +104,8 @@ artifacts {
     archives jar
 }
 
+signAllJars()
+
 sourceSets {
 	main {
 		java
@@ -146,33 +116,20 @@ sourceSets {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:$config.forge.version"
-}
-
-compileJava {
-    options.encoding = "UTF-8"
-}
-
-def generateChangelogUrl() {
-	String url = "https://github.com/MC-U-Team/${config.github.name}/blob/${config.github.branch}/CHANGELOG.md"
-	String mcversion = "${config.forge.mcversion}".replace(".", "")
-	String version = "${project.version}".replace(".", "")
-	String date =new Date().format("yyyy-MM-dd");
-	return url + "#" + mcversion + "-" + version + "---" + date
+    minecraft getForgeDependency()
+    runtime getUTeamCoreDependency()
 }
 
 curseforge {
-	if(System.getenv("token") != null) {
-		apiKey = System.getenv("token")
-	} else {
-		if (project.hasProperty("token")) {
-			apiKey = project.getProperty("token")
-		} else {
-			apiKey = "mrTroble" //We dont have one lol ¯\_(ツ)_/¯
+	afterEvaluate {
+		tasks."curseforge${config.curse.id}".onlyIf {
+			getValue("token") != null
 		}
 	}
 	
 	tasks.curseforge.dependsOn build
+	
+	apiKey = getValue("token")
 	
   	project {
     	id = config.curse.id
@@ -184,6 +141,10 @@ curseforge {
 		    forgeGradleIntegration = false
 		}
 		
+		relations {
+      		optionalDependency "u-team-core"
+    	}
+
     	mainArtifact(jar) {
       		displayName = "${config.curse.display}-${config.forge.mcversion}-${project.version}"
       		changelogType = "html"
@@ -199,19 +160,16 @@ curseforge {
 }
 
 uploadArchives {
+	onlyIf {
+		getValue("mavenpass") != null
+	}
 
 	tasks.uploadArchives.dependsOn build
 
 	repositories {
 		mavenDeployer {
-			String mavenPass = System.getenv("mavenpass")
-			if(mavenPass == null) {
-				mavenPass = project.getProperty("mavenpass")
-			}
-			if (mavenPass != null) {
-				repository(url: "https://repo.u-team.info") {
-					authentication(userName: "maven", password: mavenPass)
-				}
+			repository(url: "https://repo.u-team.info") {
+				authentication(userName: "maven", password: getValue("mavenpass"))
 			}
 			pom {
 				groupId = project.group
@@ -221,7 +179,7 @@ uploadArchives {
 					name project.archivesBaseName
 					packaging "jar"
 					description "${config.github.name}"
-						url "https://github.com/MC-U-Team/${config.github.name}"
+					url "https://github.com/MC-U-Team/${config.github.name}"
 					scm {
 						url "https://github.com/MC-U-Team/${config.github.name}"
 						connection "scm:git:git://github.com/MC-U-Team/${config.github.name}.git"
@@ -245,6 +203,7 @@ uploadArchives {
 						}
 					}
 				}
+				setConfigurations(null) // Prevent all dependencies in the pom file
 			}
 		}
 	}
@@ -257,5 +216,11 @@ task uploadBoth {
 	tasks.uploadBoth.dependsOn setBuildNumber
 	doLast {
 		println "Published both"
+	}
+}
+
+gradle.taskGraph.whenReady {
+	if (gradle.taskGraph.hasTask(":curseforge${config.curse.id}") || gradle.taskGraph.hasTask(":uploadArchives")) {
+		validateBuild()
 	}
 }
