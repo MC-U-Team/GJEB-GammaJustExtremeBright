@@ -1,10 +1,14 @@
 package info.u_team.gjeb;
 
+import java.lang.reflect.Method;
+
+import org.apache.logging.log4j.*;
+
 import net.minecraft.client.gui.screen.VideoSettingsScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.SliderPercentageOption;
 import net.minecraftforge.api.distmarker.*;
-import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.*;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -14,8 +18,24 @@ public class GJEBMod {
 	
 	public static final String MODID = "gjeb";
 	
+	private static final Logger LOGGER = LogManager.getLogger(MODID);
+	
 	public GJEBMod() {
+		tryCheckSigned();
 		DistExecutor.runWhenOn(Dist.CLIENT, () -> GJEBMod::replaceSlider);
+	}
+	
+	private void tryCheckSigned() {
+		try {
+			if (ModList.get().isLoaded("uteamcore")) {
+				Class<?> clazz = Class.forName("info.u_team.u_team_core.util.verify.JarSignVerifier");
+				Method method = clazz.getDeclaredMethod("checkSigned", String.class);
+				method.invoke(null, MODID);
+				return;
+			}
+		} catch (Exception ex) {
+		}
+		LOGGER.warn("If the mod gjeb is signed can only be checked if uteamcore is installed.");
 	}
 	
 	@OnlyIn(Dist.CLIENT)
