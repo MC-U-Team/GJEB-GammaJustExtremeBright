@@ -10,10 +10,8 @@ import net.minecraft.client.settings.SliderPercentageOption;
 import net.minecraftforge.api.distmarker.*;
 import net.minecraftforge.fml.*;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 @Mod(GJEBMod.MODID)
-@EventBusSubscriber
 public class GJEBMod {
 	
 	public static final String MODID = "gjeb";
