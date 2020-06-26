@@ -20,7 +20,7 @@ public class GJEBMod {
 	
 	public GJEBMod() {
 		tryCheckSigned();
-		DistExecutor.runWhenOn(Dist.CLIENT, () -> GJEBMod::replaceSlider);
+		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> GJEBMod::replaceSlider);
 	}
 	
 	private void tryCheckSigned() {
