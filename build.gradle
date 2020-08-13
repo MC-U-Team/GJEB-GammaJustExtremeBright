@@ -109,9 +109,7 @@ signAllJars()
 sourceSets {
 	main {
 		java
-		resources {
-			srcDirs += "src/generated/resources"
-		}
+		resources
 	}
 }
 
