@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.15.2-1.1.1.7] - 2020-08-13
+### Changed
+ - Make the safe dist executor more safe with an extra class with the client code
+ - Add display test, so the server / client ignore the mod
+
 ## [1.15.2-1.1.0.6] - 2020-07-02
 ### Changed
  - Updated to forge 31.2.30
