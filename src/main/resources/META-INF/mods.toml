@@ -16,7 +16,7 @@ authors="HyCraftHD"
 	[[dependencies.gjeb]]
 	    modId="forge"
 	    mandatory=true
-	    versionRange="[31.2.30,)"
+	    versionRange="[33.0.0,)"
 	    ordering="NONE"
 	    side="CLIENT"
 	
