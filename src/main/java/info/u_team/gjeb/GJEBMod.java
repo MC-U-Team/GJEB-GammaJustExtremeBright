@@ -2,12 +2,14 @@ package info.u_team.gjeb;
 
 import java.lang.reflect.Method;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.*;
 
 import info.u_team.gjeb.client.GJEBReplace;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.*;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.network.FMLNetworkConstants;
 
 @Mod(GJEBMod.MODID)
 public class GJEBMod {
@@ -18,6 +20,7 @@ public class GJEBMod {
 	
 	public GJEBMod() {
 		tryCheckSigned();
+		ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.DISPLAYTEST, () -> Pair.of(() -> FMLNetworkConstants.IGNORESERVERONLY, (a, b) -> true));
 		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> GJEBReplace::replaceSlider);
 	}
 	
