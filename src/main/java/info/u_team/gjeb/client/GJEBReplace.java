@@ -16,9 +16,9 @@ public class GJEBReplace {
 		}, (settings, option) -> {
 			final double value = option.normalizeValue(option.get(settings));
 			if (value == 0) {
-				return option.func_243222_a(new TranslationTextComponent("options.gamma.min"));
+				return option.getGenericValueComponent(new TranslationTextComponent("options.gamma.min"));
 			} else {
-				return value == 1 ? option.func_243222_a(new TranslationTextComponent("options.gamma.max")) : option.func_243223_b((int) (value * 1000));
+				return value == 1 ? option.getGenericValueComponent(new TranslationTextComponent("options.gamma.max")) : option.getPercentageAddMessage((int) (value * 1000));
 			}
 		});
 	}
