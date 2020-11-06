@@ -34,7 +34,7 @@ public class GJEBMod {
 			}
 		} catch (Exception ex) {
 		}
-		LOGGER.warn("If the mod gjeb is signed can only be checked if uteamcore is installed.");
+		LOGGER.warn("JarSignVerifier could not be executed, because uteamcore is not installed.");
 	}
 	
 }
