@@ -17,7 +17,7 @@ authors="HyCraftHD"
 	[[dependencies.gjeb]]
 	    modId="forge"
 	    mandatory=true
-	    versionRange="[34.1.19,)"
+	    versionRange="[34.1.42,)"
 	    ordering="NONE"
 	    side="CLIENT"
 	
