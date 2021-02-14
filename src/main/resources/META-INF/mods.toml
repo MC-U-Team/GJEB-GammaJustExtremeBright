@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[35,)"
+loaderVersion="[36,)"
 issueTrackerURL="https://github.com/MC-U-Team/GJEB-GammaJustExtremeBright/issues"
 displayURL="https://u-team.info/mods/gjeb"
 logoFile="logo.png"
@@ -17,13 +17,13 @@ authors="HyCraftHD"
 	[[dependencies.gjeb]]
 	    modId="forge"
 	    mandatory=true
-	    versionRange="[35.1.37,)"
+	    versionRange="[36.0.22,)"
 	    ordering="NONE"
 	    side="CLIENT"
 	
 	[[dependencies.gjeb]]
 	    modId="minecraft"
 	    mandatory=true
-	    versionRange="[1.16.4]"
+	    versionRange="[1.16.5]"
 	    ordering="NONE"
 	    side="CLIENT"
