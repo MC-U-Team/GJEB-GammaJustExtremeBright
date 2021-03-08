@@ -27,12 +27,12 @@ public class GJEBMod {
 	private void tryCheckSigned() {
 		try {
 			if (ModList.get().isLoaded("uteamcore")) {
-				Class<?> clazz = Class.forName("info.u_team.u_team_core.util.verify.JarSignVerifier");
-				Method method = clazz.getDeclaredMethod("checkSigned", String.class);
+				final Class<?> clazz = Class.forName("info.u_team.u_team_core.util.verify.JarSignVerifier");
+				final Method method = clazz.getDeclaredMethod("checkSigned", String.class);
 				method.invoke(null, MODID);
 				return;
 			}
-		} catch (Exception ex) {
+		} catch (final Exception ex) {
 		}
 		LOGGER.warn("JarSignVerifier could not be executed, because uteamcore is not installed.");
 	}
