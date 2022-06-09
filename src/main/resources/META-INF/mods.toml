@@ -1,29 +1,29 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[41,)"
 issueTrackerURL="https://github.com/MC-U-Team/GJEB-GammaJustExtremeBright/issues"
-displayURL="https://u-team.info/mods/gjeb"
-logoFile="logo.png"
 license="Apache-2.0 License"
-credits="Team U-Team"
-authors="HyCraftHD"
 
 [[mods]]
 	modId="gjeb"
 	version="${file.jarVersion}"
 	displayName="GJEB (GammaJustExtremeBright)"
+	displayURL="https://u-team.info/mods/gjeb"
 	updateJSONURL="https://api.u-team.info/update/gjeb.json"
-	description="This mod just let you customize your gamma ingame from 0% to 1000%."
+	logoFile="logo.png"
+	credits="Team U-Team"
+	authors="HyCraftHD"
+	description="Join our discord server here: https://discord.u-team.info\n\nThis mod just let you customize your gamma ingame from 0% to 1000%."
 	
 	[[dependencies.gjeb]]
 	    modId="forge"
 	    mandatory=true
-	    versionRange="[36.1.30,)"
+	    versionRange="[41.0.1,)"
 	    ordering="NONE"
-	    side="CLIENT"
+	    side="BOTH"
 	
 	[[dependencies.gjeb]]
 	    modId="minecraft"
 	    mandatory=true
-	    versionRange="[1.16.5]"
+	    versionRange="[1.19]"
 	    ordering="NONE"
-	    side="CLIENT"
+	    side="BOTH"
