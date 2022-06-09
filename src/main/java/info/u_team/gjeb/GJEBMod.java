@@ -2,18 +2,19 @@ package info.u_team.gjeb;
 
 import java.lang.reflect.Method;
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import info.u_team.gjeb.client.GJEBReplace;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ExtensionPoint;
+import net.minecraftforge.fml.IExtensionPoint.DisplayTest;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.network.FMLNetworkConstants;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.network.NetworkConstants;
 
 @Mod(GJEBMod.MODID)
 public class GJEBMod {
@@ -24,8 +25,10 @@ public class GJEBMod {
 	
 	public GJEBMod() {
 		tryCheckSigned();
-		ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.DISPLAYTEST, () -> Pair.of(() -> FMLNetworkConstants.IGNORESERVERONLY, (a, b) -> true));
-		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> GJEBReplace::replaceSlider);
+		ModLoadingContext.get().registerExtensionPoint(DisplayTest.class, () -> new DisplayTest(() -> NetworkConstants.IGNORESERVERONLY, (remoteVersion, network) -> true));
+		FMLJavaModLoadingContext.get().getModEventBus().addListener((FMLClientSetupEvent event) -> {
+			DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> GJEBReplace::replaceGammaLimit);
+		});
 	}
 	
 	private void tryCheckSigned() {
