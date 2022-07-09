@@ -8,7 +8,7 @@ import info.u_team.gjeb.mixin.GJEBMixinPlugin;
 abstract class RubidiumSodiumGameOptionPagesMixin {
 	
 	@SuppressWarnings("unused")
-	private static void gjeb_force_mixin_apply() {
+	private static void gjeb_forceMixinApply() {
 		System.out.println();
 	}
 	
