@@ -14,6 +14,7 @@ buildscript {
 	dependencies {
 		classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
 		classpath group: "org.parchmentmc", name: "librarian", version: "1.+", changing: true
+		classpath group: "org.spongepowered", name: "mixingradle", version: "0.7.+", changing: true
 		classpath group: "info.u-team.gradle_files", name: "gradle_files", version: "1.2.1"
 		classpath group: "info.u-team.curse_gradle_uploader", name: "curse_gradle_uploader", version: "1.5.1"
 	}
@@ -21,6 +22,7 @@ buildscript {
 
 apply plugin: "net.minecraftforge.gradle"
 apply plugin: "org.parchmentmc.librarian.forgegradle"
+apply plugin: "org.spongepowered.mixin"
 apply plugin: "info.u_team.gradle_files"
 apply plugin: "info.u_team.curse_gradle_uploader"
 apply plugin: "maven-publish"
@@ -108,10 +110,29 @@ sourceSets {
 	}
 }
 
+repositories {
+	maven {
+		url "https://cursemaven.com"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
+}
+
 dependencies {
 	minecraft gradlefiles.forgeDependency()
 	
 	runtimeOnly fg.deobf("info.u-team:u_team_core-1.19:4.2.0.221")
+	
+	implementation fg.deobf("curse.maven:rubidium-574856:3839967")
+}
+
+mixin {
+	add sourceSets.main, "mixins.gjeb.refmap.json"
+	config "mixins.gjeb.json"
+	
+	debug.verbose = true
+	debug.export = true
 }
 
 curseforge {
