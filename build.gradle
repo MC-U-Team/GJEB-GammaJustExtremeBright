@@ -126,9 +126,7 @@ curseforge {
 		addGameVersion "Java 17"
 		
 		relations {
-			requiredDependency "u-team-core"
-			optionalDependency "jei"
-			optionalDependency "curios"
+			optionalDependency "u-team-core"
 		}
 		
 		mainArtifact(tasks.getByName("jar")) {
