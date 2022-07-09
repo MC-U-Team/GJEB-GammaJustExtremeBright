@@ -12,7 +12,7 @@ license="Apache-2.0 License"
 	logoFile="logo.png"
 	credits="Team U-Team"
 	authors="HyCraftHD"
-	description="Join our discord server here: https://discord.u-team.info\n\nThis mod just let you customize your gamma ingame from 0% to 1000%."
+	description="Join our discord server here: https://discord.hycrafthd.net\n\nThis mod just let you customize your gamma ingame from 0% to 1000%."
 	
 	[[dependencies.gjeb]]
 	    modId="forge"
