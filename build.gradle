@@ -127,7 +127,7 @@ dependencies {
 	
 	runtimeOnly fg.deobf("info.u-team:u_team_core-1.19:4.2.0.221")
 	
-	implementation fg.deobf("curse.maven:rubidium-574856:3839967")
+	implementation fg.deobf("curse.maven:rubidium-574856:3864138")
 	
 	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
