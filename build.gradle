@@ -153,6 +153,7 @@ curseforge {
 		
 		relations {
 			optionalDependency "u-team-core"
+			optionalDependency "rubidium"
 		}
 		
 		mainArtifact(tasks.getByName("jar")) {
