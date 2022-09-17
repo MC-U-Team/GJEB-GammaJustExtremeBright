@@ -37,8 +37,8 @@ public class GJEBMod {
 				return;
 			}
 		} catch (final Exception ex) {
+			LOGGER.warn("JarSignVerifier could not be executed, because uteamcore is not installed.");
 		}
-		LOGGER.warn("JarSignVerifier could not be executed, because uteamcore is not installed.");
 	}
 	
 }
