@@ -125,7 +125,7 @@ repositories {
 dependencies {
 	minecraft gradlefiles.forgeDependency()
 	
-	runtimeOnly fg.deobf("info.u-team:u_team_core-1.19.2:4.3.1.225")
+	runtimeOnly fg.deobf("info.u-team:u_team_core-1.19.2:4.3.1.231")
 	
 	implementation fg.deobf("curse.maven:rubidium-574856:3864138")
 	
