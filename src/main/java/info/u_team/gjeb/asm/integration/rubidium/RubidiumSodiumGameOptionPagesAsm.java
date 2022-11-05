@@ -17,14 +17,14 @@ public class RubidiumSodiumGameOptionPagesAsm {
 	public static void asm(ClassNode targetClass) {
 		for (final MethodNode method : targetClass.methods) {
 			for (final AbstractInsnNode ins : method.instructions) {
-				if (ins instanceof MethodInsnNode methodIns) {
+				if (ins instanceof final MethodInsnNode methodIns) {
 					if (methodIns.getOpcode() == Opcodes.INVOKESTATIC && //
 							methodIns.owner.equals("me/jellysquid/mods/sodium/client/gui/options/control/ControlValueFormatter") && //
 							methodIns.name.equals("brightness") && //
 							methodIns.desc.equals("()Lme/jellysquid/mods/sodium/client/gui/options/control/ControlValueFormatter;")) {
-						AbstractInsnNode node = ins.getPrevious().getPrevious(); // Find IntInsNode with 100 value
+						final AbstractInsnNode node = ins.getPrevious().getPrevious(); // Find IntInsNode with 100 value
 						
-						if (node instanceof IntInsnNode intInsNode) {
+						if (node instanceof final IntInsnNode intInsNode) {
 							intInsNode.setOpcode(Opcodes.SIPUSH);
 							intInsNode.operand = 1000;
 							LOGGER.debug("Inject gjeb into rubidiums guis");
