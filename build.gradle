@@ -125,9 +125,9 @@ repositories {
 dependencies {
 	minecraft gradlefiles.forgeDependency()
 	
-	runtimeOnly fg.deobf("info.u-team:u_team_core-1.19.2:4.4.3.236")
+	runtimeOnly fg.deobf("info.u-team:u_team_core-1.19.3:4.5.3.240")
 	
-	implementation fg.deobf("curse.maven:rubidium-574856:3864138")
+	implementation fg.deobf("curse.maven:rubidium-574856:4167344")
 	
 	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
