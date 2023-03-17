@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[44,)"
+loaderVersion="[45,)"
 issueTrackerURL="https://github.com/MC-U-Team/GJEB-GammaJustExtremeBright/issues"
 license="Apache-2.0 License"
 
@@ -17,13 +17,13 @@ license="Apache-2.0 License"
 	[[dependencies.gjeb]]
 	    modId="forge"
 	    mandatory=true
-	    versionRange="[44.1.17,)"
+	    versionRange="[45.0.8,)"
 	    ordering="NONE"
 	    side="BOTH"
 	
 	[[dependencies.gjeb]]
 	    modId="minecraft"
 	    mandatory=true
-	    versionRange="[1.19.3]"
+	    versionRange="[1.19.4]"
 	    ordering="NONE"
 	    side="BOTH"
