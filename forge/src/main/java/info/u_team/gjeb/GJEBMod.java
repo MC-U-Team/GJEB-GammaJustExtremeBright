@@ -19,7 +19,6 @@ import net.minecraftforge.network.NetworkConstants;
 public class GJEBMod {
 	
 	public static final String MODID = GJEBReference.MODID;
-	
 	public static final Logger LOGGER = LogUtils.getLogger();
 	
 	public GJEBMod() {

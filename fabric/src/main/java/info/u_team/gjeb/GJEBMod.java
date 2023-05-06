@@ -9,7 +9,6 @@ import net.fabricmc.api.ClientModInitializer;
 public class GJEBMod implements ClientModInitializer {
 	
 	public static final String MODID = GJEBReference.MODID;
-	
 	public static final Logger LOGGER = LogUtils.getLogger();
 	
 	@Override
