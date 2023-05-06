@@ -140,7 +140,7 @@ curseforge {
 			optionalDependency "rubidium"
 		}
 		
-		mainArtifact(tasks.getByName("remapJar")) {
+		mainArtifact(tasks.getByName("jar")) {
 			displayName = "${config.curse.display}-Forge-${config.minecraft.version}-${project.version}"
 			changelogType = "html"
 			changelog = "<a href=\"${gradlefiles.changelogUrl()}\">Changelog of ${project.version}</a>"
