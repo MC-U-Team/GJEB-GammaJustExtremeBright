@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"info.u_team.music_player.MusicPlayerMod"
+			"info.u_team.gjeb.GJEBMod"
 		]
 	},
 	"accessWidener": "gjeb.accesswidener",
