@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.19.4-1.2.1.29] - 2023-03-17
+## [1.19.4-1.3.0.30] - 2023-05-07
 ### Changed
- - Port to 1.19.4
- - Rubidium integration might be broken
+ - Create multi build project
+ - Port to fabric

@@ -7,12 +7,11 @@ import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import info.u_team.gjeb.asm.integration.rubidium.RubidiumSodiumGameOptionPagesAsm;
-import net.minecraftforge.fml.loading.LoadingModList;
+import info.u_team.gjeb.asm.integration.sodium.SodiumGameOptionPagesAsm;
 
-public class GJEBMixinPlugin implements IMixinConfigPlugin {
+public abstract class GJEBAbstractMixinPlugin implements IMixinConfigPlugin {
 	
-	public static final String RUBIDIUM_CLASS = "me.jellysquid.mods.sodium.client.gui.SodiumGameOptionPages";
+	public static final String SODIUM_CLASS = "me.jellysquid.mods.sodium.client.gui.SodiumGameOptionPages";
 	
 	@Override
 	public void onLoad(String mixinPackage) {
@@ -34,21 +33,23 @@ public class GJEBMixinPlugin implements IMixinConfigPlugin {
 	
 	@Override
 	public List<String> getMixins() {
-		if (LoadingModList.get().getModFileById("rubidium") != null) {
-			return List.of("integration.rubidium.RubidiumSodiumGameOptionPagesMixin");
+		if (modLoaded("sodium", "rubidium")) {
+			return List.of("integration.sodium.SodiumGameOptionPagesMixin");
 		}
 		return null;
 	}
 	
 	@Override
 	public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-		if (targetClassName.equals(RUBIDIUM_CLASS)) {
-			RubidiumSodiumGameOptionPagesAsm.asm(targetClass);
+		if (targetClassName.equals(SODIUM_CLASS)) {
+			SodiumGameOptionPagesAsm.asm(targetClass);
 		}
 	}
 	
 	@Override
 	public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
 	}
+	
+	protected abstract boolean modLoaded(String... mods);
 	
 }
