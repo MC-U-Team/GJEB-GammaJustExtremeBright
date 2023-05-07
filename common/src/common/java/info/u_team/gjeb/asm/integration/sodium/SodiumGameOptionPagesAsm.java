@@ -1,4 +1,4 @@
-package info.u_team.gjeb.asm.integration.rubidium;
+package info.u_team.gjeb.asm.integration.sodium;
 
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-public class RubidiumSodiumGameOptionPagesAsm {
+public class SodiumGameOptionPagesAsm {
 	
 	private static Logger LOGGER = LogUtils.getLogger();
 	
@@ -27,9 +27,9 @@ public class RubidiumSodiumGameOptionPagesAsm {
 						if (node instanceof final IntInsnNode intInsNode) {
 							intInsNode.setOpcode(Opcodes.SIPUSH);
 							intInsNode.operand = 1000;
-							LOGGER.debug("Inject gjeb into rubidiums guis");
+							LOGGER.debug("Inject gjeb into sodium guis");
 						} else {
-							LOGGER.warn("Cannot make rubidium compatible with gjeb");
+							LOGGER.warn("Cannot make sodium compatible with gjeb");
 						}
 					}
 				}
