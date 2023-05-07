@@ -53,6 +53,10 @@ loom {
 			ideConfigGenerated true
 		}
 	}
+	
+	mixin {
+		defaultRefmapName = "gjeb.mixins.refmap.json"
+	}
 }
 
 tasks.withType(Jar) { task ->
