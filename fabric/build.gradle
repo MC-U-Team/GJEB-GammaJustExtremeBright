@@ -111,7 +111,7 @@ dependencies {
 	
 	modRuntimeOnly "info.u-team:u_team_core-fabric-1.19.4:5.0.2.261"
 	
-	modRuntimeOnly "maven.modrinth:sodium:mc1.19.4-0.4.10"
+	modRuntimeOnly "maven.modrinth:sodium:mc1.20-0.4.10"
 }
 
 processResources {
