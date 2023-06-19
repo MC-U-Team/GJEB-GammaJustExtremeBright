@@ -93,7 +93,7 @@ dependencies {
 	
 	modImplementation gradlefiles.fabricLoaderDependency()
 	
-	modRuntimeOnly "info.u-team:u_team_core-fabric-1.20.1:5.1.2.264"
+	modRuntimeOnly "info.u-team:u_team_core-fabric-1.20.1:5.1.2.266"
 	
 	modRuntimeOnly "maven.modrinth:sodium:mc1.20-0.4.10"
 }
