@@ -48,6 +48,14 @@ minecraft {
 	}
 }
 
+mixin {
+	add sourceSets.main, "gjeb.mixins.refmap.json"
+	config "gjeb.mixins.json"
+	
+	debug.verbose = true
+	debug.export = true
+}
+
 tasks.withType(Jar).configureEach { task ->
 	gradlefiles.defaultJar(task)
 }
@@ -94,14 +102,6 @@ dependencies {
 	runtimeOnly fg.deobf("curse.maven:rubidium-574856:4573226")
 	
 	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-}
-
-mixin {
-	add sourceSets.main, "gjeb.mixins.refmap.json"
-	config "gjeb.mixins.json"
-	
-	debug.verbose = true
-	debug.export = true
 }
 
 curseforge {
