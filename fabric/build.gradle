@@ -96,7 +96,7 @@ dependencies {
 	
 	modImplementation gradlefiles.fabricLoaderDependency()
 	
-	modRuntimeOnly "info.u-team:u_team_core-fabric-1.20.1:5.1.3.268"
+	modRuntimeOnly "info.u-team:u_team_core-fabric-1.20.1:5.1.4.269"
 	
 	modRuntimeOnly "com.terraformersmc:modmenu:${config.modmenu.fabric.version}"
 	
