@@ -100,7 +100,7 @@ dependencies {
 	
 	modRuntimeOnly "com.terraformersmc:modmenu:${config.modmenu.fabric.version}"
 	
-	modRuntimeOnly "maven.modrinth:sodium:mc1.20-0.4.10"
+	modRuntimeOnly "maven.modrinth:sodium:mc1.20.1-0.5.1"
 }
 
 processResources {
