@@ -16,7 +16,7 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 	plugins {
-		id "org.gradle.toolchains.foojay-resolver-convention" version "0.8.0"
+		id "org.gradle.toolchains.foojay-resolver-convention" version "1.0.0"
 		
 		id "net.minecraftforge.gradle" version "6.0.+"
 		id "org.parchmentmc.librarian.forgegradle" version "1.+"
@@ -24,9 +24,9 @@ pluginManagement {
 		
 		id "fabric-loom" version "1.10.+"
 		
-		id "info.u_team.gradle_files" version "4.0.1"
+		id "info.u_team.gradle_files" version "4.0.6"
 		
-		id "me.modmuss50.mod-publish-plugin" version "0.6.2"
+		id "me.modmuss50.mod-publish-plugin" version "0.8.4"
 	}
 }
 
