@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.20.1-1.3.0.39] - 2025-05-22
+### Changed
+ - Update build script and versions
+
 ## [1.20.1-1.3.0.36] - 2025-01-15
 ### Changed
  - Update license to new year and update buildscripts
