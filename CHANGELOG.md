@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.21.1-1.3.0.40] - 2025-05-22
+### Changed
+ - Update build script version
+ - Prepare for porting
+
 ## [1.21.1-1.3.0.38] - 2025-02-01
 ### Changed
  - Fix version for fabric build
